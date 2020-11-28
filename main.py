@@ -18,10 +18,8 @@ def parse(time: str):
 
 async def main(args):
     async with aiohttp.ClientSession(headers=headers) as session:
-        # 955c1fdda5609ef9660d3d6bcd48527c88edbd55
-
         try:
-            url = f"https://api.github.com/repos/{args[1]}/{args[2]}/commits?path={args[3]}"
+            url = f"https://api.github.com/repos/{args[1]}/{args[2]}/commits"
 
             async with session.get(url) as response:
                 results = await response.json()
@@ -40,7 +38,7 @@ async def main(args):
             raise arg_error from err
 
 if __name__ == "__main__":
-    import sys # command-line arguments: user, repo, file
+    import sys # command-line arguments: user, repo
 
     loop = asyncio.get_event_loop()
     loop.run_until_complete(main(sys.argv))
