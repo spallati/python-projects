@@ -32,6 +32,7 @@ async def main(args):
                     print(f"\t{commit['message']} [ {result['sha']} ]")
                     print(f"\t    author: {author['name']} ({author['email']})")
                     print(f"\t    url: {result['html_url']}\n\t    date: {parse(author['date'])}\n")
+                    print("Done")
 
                 # DEBUG: print(f"{len(results)} results\n\n{json.dumps(results, indent=4)}")
         except IndexError as err:
